@@ -19,10 +19,6 @@ public class Main extends JavaPlugin implements Listener{
 			
 		}
 
-		
-
-		
-		
 		@Override
 		public void onDisable() {
 			System.out.println("사실 이스터애그는 없었습니다");
@@ -30,19 +26,18 @@ public class Main extends JavaPlugin implements Listener{
 		}
 		
 		@EventHandler
-	    public void onInteract(PlayerInteractEvent e) {
+		public void onInteract(PlayerInteractEvent e) {
+			Player p = e.getPlayer();
 	        if (e.getAction() == Action.RIGHT_CLICK_AIR
 	            || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-	            if (e.getItem().getType() == Material.TNT) {
-	            	Player p = e.getPlayer();
-	            	e.setCancelled(true);
-	                p.getWorld().createExplosion(p.getLocation(), 50);
-	            }
+	        	
+	        	if (e.getItem().getType() == Material.APPLE) {
+	        		p.getWorld().createExplosion(p.getLocation(), 20);
+	        	}
 	            
-	            if(e.getItem().getType() == Material.NETHER_STAR) {
-	            	Player p = e.getPlayer();
-	            	p.getLocation().getBlock().setType(Material.LAVA);
-	            }
+	        	if(e.getItem().getType() == Material.NETHER_STAR) {
+	        		p.getLocation().getBlock().setType(Material.LAVA);
+	        	}
 	        }
 		}
 }
